@@ -2,7 +2,7 @@
   <swiper>
     <swiper-slide v-for="(item, index) in contents" :key="index">
       <div class="container">
-        <div class="info theme_1">
+        <div class="info theme_2">
           <h2 class="info__title">" {{ item.title.toUpperCase() }} "</h2>
           <p class="info__spot">{{ item.spot }}</p>
           <p class="info__date">{{ item.date }}</p>
@@ -28,7 +28,7 @@ type Content = {
   title: string;
   spot: string;
   date: string;
-  type: 'image';
+  type: 'image' | 'video';
   src: string;
 };
 
@@ -84,6 +84,7 @@ onMounted(() => {});
   width: 100%;
   height: 100vh;
   background-color: #000;
+  min-width: 480px;
 }
 .info {
   position: absolute;
@@ -123,6 +124,7 @@ onMounted(() => {});
   width: 80%;
   opacity: 0.8;
   font-size: 14px;
+  letter-spacing: -0.4px;
 }
 
 .info__date {
