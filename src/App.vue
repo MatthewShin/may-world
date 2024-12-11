@@ -28,6 +28,7 @@ type Content = {
   title: string;
   spot: string;
   date: string;
+  type: 'image';
   src: string;
 };
 
@@ -38,25 +39,57 @@ const defaultContents: Contents = [
     title: 'Early morning commute',
     spot: 'People are diligent; even at an early hour, the subway was packed with people, and it was still dark outside',
     date: '2024.12.11',
+    type: 'image',
     src: 'src/assets/images/image1.jpeg',
   },
   {
     title: 'The alley behind the office',
     spot: 'On a cold winter’s early morning commute, there are no people around, and the streetlights glow warmly.',
     date: '2024.12.11',
+    type: 'image',
     src: 'src/assets/images/image2.jpeg',
   },
   {
     title: 'French grocery store',
     spot: 'A newly opened specialty store for French cooking ingredients feels unfamiliar to me. Will I ever get a chance to visit it?',
     date: '2024.12.11',
+    type: 'image',
     src: 'src/assets/images/image3.jpeg',
   },
   {
     title: 'Starbugs',
     spot: 'In the early morning, the warm lights of a distant Starbucks catch my eye. I wish I could go in and enjoy a warm cup of coffee.',
     date: '2024.12.11',
+    type: 'image',
     src: 'src/assets/images/image4.jpeg',
+  },
+  {
+    title: 'Starbugs',
+    spot: 'In the early morning, the warm lights of a distant Starbucks catch my eye. I wish I could go in and enjoy a warm cup of coffee.',
+    date: '2024.12.11',
+    type: 'image',
+    src: 'src/assets/images/image5.jpeg',
+  },
+  {
+    title: 'Starbugs',
+    spot: 'In the early morning, the warm lights of a distant Starbucks catch my eye. I wish I could go in and enjoy a warm cup of coffee.',
+    date: '2024.12.11',
+    type: 'image',
+    src: 'src/assets/images/image6.jpeg',
+  },
+  {
+    title: 'Starbugs',
+    spot: 'In the early morning, the warm lights of a distant Starbucks catch my eye. I wish I could go in and enjoy a warm cup of coffee.',
+    date: '2024.12.11',
+    type: 'image',
+    src: 'src/assets/images/image7.jpeg',
+  },
+  {
+    title: 'Starbugs',
+    spot: 'In the early morning, the warm lights of a distant Starbucks catch my eye. I wish I could go in and enjoy a warm cup of coffee.',
+    date: '2024.12.11',
+    type: 'image',
+    src: 'src/assets/images/image8.jpeg',
   },
 ];
 
