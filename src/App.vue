@@ -1,27 +1,39 @@
 <template>
-  <section class="container">
-    <div class="info">
-      <h2 class="info__title">" {{ activeContent.title.toUpperCase() }} "</h2>
-      <p class="info__spot">{{ activeContent.spot }}</p>
-      <p class="info__date">{{ activeContent.date }}</p>
-    </div>
-    <div class="bg">
-      <div class="bg__vignette"></div>
-      <div id="bg-image" class="bg__image"></div>
-    </div>
-    <p class="copyright">reodavin@gmail.com / 010.3258.6912</p>
-  </section>
+  <swiper>
+    <swiper-slide v-for="(item, index) in contents" :key="index">
+      <div class="container">
+        <div class="info">
+          <h2 class="info__title">" {{ item.title.toUpperCase() }} "</h2>
+          <p class="info__spot">{{ item.spot }}</p>
+          <p class="info__date">{{ item.date }}</p>
+        </div>
+        <div class="bg">
+          <div class="bg__vignette"></div>
+          <div id="bg-image" class="bg__image" :style="`background-image: url(${item.src})`"></div>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper>
+  <p class="copyright">reodavin@gmail.com / 010.3258.6912</p>
 </template>
 
 <script setup lang="ts">
-import { type Ref, ref, onMounted } from 'vue';
-// const title: Ref<string> = ref('Starbugs'.toUpperCase());
-// const spot: Ref<string> = ref(
-//   'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor, incidunt.',
-// );
-// const date: Ref<string> = ref('2024.12.11');
+import { ref, onMounted } from 'vue';
 
-const defaultContents = [
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide /* rest swiper/vue API... */ } from 'vue-awesome-swiper';
+
+type Content = {
+  title: string;
+  spot: string;
+  date: string;
+  src: string;
+};
+
+type Contents = Array<Content>;
+
+const defaultContents: Contents = [
   {
     title: 'Early morning commute',
     spot: 'People are diligent; even at an early hour, the subway was packed with people, and it was still dark outside',
@@ -48,20 +60,17 @@ const defaultContents = [
   },
 ];
 
-const contents = ref(defaultContents);
-const shuffleNumber: Ref<number> = ref(Math.floor(Math.random() * contents.value.length));
-const activeContent = ref(contents.value[shuffleNumber.value]);
-
-const setBackgorundImage = () => {
-  const ele = document.getElementById('bg-image');
-  if (ele) {
-    ele.style.backgroundImage = `url(${activeContent.value.src})`;
-  }
+const shuffleArray = (array: Contents) => {
+  array.forEach((item: Content, index: number) => {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [array[index], array[randomIndex]] = [array[randomIndex], array[index]];
+  });
+  return array;
 };
 
-onMounted(() => {
-  setBackgorundImage();
-});
+const contents = ref(shuffleArray(defaultContents));
+
+onMounted(() => {});
 </script>
 
 <style scoped>
@@ -69,6 +78,7 @@ onMounted(() => {
   position: relative;
   width: 100%;
   height: 100vh;
+  background-color: #000;
 }
 .info {
   position: absolute;
@@ -110,8 +120,8 @@ onMounted(() => {
   background-color: #ccc;
   background-size: cover;
   background-position: center center;
-  filter: brightness(1.1) contrast(1.1) blur(1px);
-  /* opacity: 0.6; */
+  filter: brightness(1.2) contrast(1.1) blur(1px);
+  opacity: 1;
 }
 
 .bg__vignette {
