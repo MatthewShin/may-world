@@ -2,7 +2,7 @@
   <swiper>
     <swiper-slide v-for="(item, index) in contents" :key="index">
       <div class="container">
-        <div class="info">
+        <div class="info theme_1">
           <h2 class="info__title">" {{ item.title.toUpperCase() }} "</h2>
           <p class="info__spot">{{ item.spot }}</p>
           <p class="info__date">{{ item.date }}</p>
@@ -22,7 +22,7 @@ import { ref, onMounted } from 'vue';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Swiper, SwiperSlide /* rest swiper/vue API... */ } from 'vue-awesome-swiper';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 
 type Content = {
   title: string;
@@ -63,34 +63,6 @@ const defaultContents: Contents = [
     type: 'image',
     src: 'src/assets/images/image4.webp',
   },
-  {
-    title: 'Starbugs',
-    spot: 'In the early morning, the warm lights of a distant Starbucks catch my eye. I wish I could go in and enjoy a warm cup of coffee.',
-    date: '2024.12.11',
-    type: 'image',
-    src: 'src/assets/images/image5.webp',
-  },
-  {
-    title: 'Starbugs',
-    spot: 'In the early morning, the warm lights of a distant Starbucks catch my eye. I wish I could go in and enjoy a warm cup of coffee.',
-    date: '2024.12.11',
-    type: 'image',
-    src: 'src/assets/images/image6.webp',
-  },
-  {
-    title: 'Starbugs',
-    spot: 'In the early morning, the warm lights of a distant Starbucks catch my eye. I wish I could go in and enjoy a warm cup of coffee.',
-    date: '2024.12.11',
-    type: 'image',
-    src: 'src/assets/images/image7.webp',
-  },
-  {
-    title: 'Starbugs',
-    spot: 'In the early morning, the warm lights of a distant Starbucks catch my eye. I wish I could go in and enjoy a warm cup of coffee.',
-    date: '2024.12.11',
-    type: 'image',
-    src: 'src/assets/images/image8.webp',
-  },
 ];
 
 const shuffleArray = (array: Contents) => {
@@ -116,11 +88,27 @@ onMounted(() => {});
 .info {
   position: absolute;
   left: 0;
-  top: 47%;
+  top: 50%;
   width: 100%;
-  color: #fff;
   text-align: center;
   z-index: 101;
+  height: 130px;
+  padding: 10px 0;
+  margin-top: -65px;
+}
+
+.theme_1 {
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.theme_2 {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.theme_3 {
+  color: #fff;
 }
 
 .info__title {
@@ -176,7 +164,7 @@ onMounted(() => {});
   color: #fff;
   text-align: center;
   font-size: 14px;
-  opacity: 0.7;
+  opacity: 0.6;
   z-index: 101;
 }
 </style>
