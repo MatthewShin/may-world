@@ -172,7 +172,6 @@ const handleCourseClick = (course: GolfCourse) => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #f8f9fa;
   min-height: 100vh;
 }
 
@@ -182,15 +181,16 @@ const handleCourseClick = (course: GolfCourse) => {
 }
 
 .title {
-  font-size: 2.4rem;
-  color: #1a1a1a;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--color-heading);
   margin-bottom: 0.5rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  color: #666;
+  font-size: 1rem;
+  color: var(--color-muted);
 }
 
 .filters {
@@ -216,31 +216,34 @@ const handleCourseClick = (course: GolfCourse) => {
 
 .filter-label {
   font-weight: 600;
-  color: #333;
-  font-size: 0.9rem;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-align: center;
 }
 
 .filter-select {
-  padding: 0.75rem 1rem;
-  border: 2px solid #333;
-  background: white;
-  color: #333;
-  border-radius: 0.5rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border-radius: var(--radius-s);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: border-color var(--motion-fast);
   font-weight: 500;
   font-size: 0.9rem;
   outline: none;
 }
 
 .filter-select:hover {
-  border-color: #666;
+  border-color: var(--color-ink);
 }
 
-.filter-select:focus {
-  border-color: #333;
-  background-color: #f8f9fa;
+.filter-select:focus-visible {
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
 }
 
 .reset-container {
@@ -250,33 +253,32 @@ const handleCourseClick = (course: GolfCourse) => {
 }
 
 .reset-btn {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #ccc;
-  background: white;
-  color: #666;
-  border-radius: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--motion-fast);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   outline: none;
 }
 
 .reset-btn:hover {
-  border-color: #333;
-  color: #333;
-  transform: translateY(-2px);
+  border-color: var(--color-ink);
+  color: var(--color-ink);
 }
 
 .reset-btn.active {
-  border-color: #e74c3c;
-  color: #e74c3c;
-  background-color: #fff5f5;
+  border-color: var(--color-accent);
+  color: var(--color-accent-ink);
+  background-color: rgba(169, 117, 36, 0.1);
 }
 
 .reset-btn.active:hover {
-  background-color: #e74c3c;
-  color: white;
+  background-color: var(--color-accent);
+  color: var(--color-dark-canvas);
 }
 
 .course-list {
@@ -286,11 +288,13 @@ const handleCourseClick = (course: GolfCourse) => {
 }
 
 .course-item {
-  background: white;
-  border-radius: 1rem;
-  border: 1px solid #e0e0e0;
+  background: var(--color-surface);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--color-border);
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition:
+    transform var(--motion-base),
+    border-color var(--motion-base);
   cursor: pointer;
   display: flex;
   height: 140px;
@@ -298,12 +302,13 @@ const handleCourseClick = (course: GolfCourse) => {
 
 .course-item:hover {
   transform: translateY(-3px);
+  border-color: var(--color-border-strong);
 }
 
 .course-image {
   width: 140px;
   height: 140px;
-  background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
+  background: var(--color-dark-canvas);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -311,9 +316,7 @@ const handleCourseClick = (course: GolfCourse) => {
 }
 
 .image-placeholder {
-  font-size: 3rem;
-  color: white;
-  filter: grayscale(0.3);
+  font-size: 2.75rem;
 }
 
 .course-info {
@@ -322,20 +325,20 @@ const handleCourseClick = (course: GolfCourse) => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: white;
+  background: var(--color-surface);
 }
 
 .course-name {
-  font-size: 1.2rem;
-  color: #1a1a1a;
+  font-size: 1.1rem;
+  color: var(--color-heading);
   margin-bottom: 0.5rem;
   font-weight: 700;
 }
 
 .course-location {
-  color: #666;
+  color: var(--color-muted);
   margin-bottom: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .course-stats {
@@ -354,8 +357,8 @@ const handleCourseClick = (course: GolfCourse) => {
 
 .stat-label {
   font-weight: 600;
-  color: #333;
-  font-size: 0.85rem;
+  color: var(--color-muted);
+  font-size: 0.8rem;
   white-space: nowrap;
 }
 
@@ -366,33 +369,32 @@ const handleCourseClick = (course: GolfCourse) => {
 
 .star {
   font-size: 0.8rem;
-  opacity: 0.2;
-  transition: all 0.3s ease;
-  color: #ccc;
+  opacity: 0.35;
+  transition: all var(--motion-fast);
   filter: grayscale(1);
 }
 
 .star.filled {
   opacity: 1;
-  color: #e74c3c;
   transform: scale(1.1);
-  filter: grayscale(0);
+  filter: grayscale(0) sepia(1) saturate(3) hue-rotate(-10deg);
 }
 
 .stat-value {
   font-weight: 700;
-  color: #333;
+  color: var(--color-ink);
   font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .no-results {
   text-align: center;
   padding: 3rem;
-  color: #666;
+  color: var(--color-muted);
   font-size: 1.1rem;
-  background: white;
-  border-radius: 1rem;
-  border: 1px solid #e0e0e0;
+  background: var(--color-surface);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--color-border);
 }
 
 @media (max-width: 770px) {

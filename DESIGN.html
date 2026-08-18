@@ -1,0 +1,677 @@
+<title>May World 스타일 타일</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+
+<style>
+  :root {
+    --paper: #f6f4ef;
+    --surface: #ffffff;
+    --surface-sunken: #efece4;
+    --ink: #15171b;
+    --muted: #6b6d72;
+    --border: #e4e1d8;
+    --border-strong: #cfccc1;
+    --accent: #a97524;
+    --accent-ink: #7a5619;
+    --success: #2f7a4c;
+    --warning: #a4560f;
+    --error: #b5372a;
+    --dark-canvas: #121214;
+    --dark-surface: #1b1c1f;
+    --dark-text: #f2f0ea;
+    --dark-muted: #a4a3a0;
+    --shadow-1: 0 1px 2px rgba(21, 23, 27, 0.06);
+    --radius-s: 4px;
+    --radius-m: 8px;
+    --font-display: 'Fraunces', Georgia, 'Noto Serif KR', serif;
+    --font-body: 'Inter', -apple-system, 'Pretendard', 'Noto Sans KR', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --paper: #121214;
+      --surface: #1b1c1f;
+      --surface-sunken: #202125;
+      --ink: #f2f0ea;
+      --muted: #a4a3a0;
+      --border: #313236;
+      --border-strong: #45464b;
+      --accent: #d5a153;
+      --accent-ink: #e8c07f;
+      --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    }
+  }
+  :root[data-theme='dark'] {
+    --paper: #121214;
+    --surface: #1b1c1f;
+    --surface-sunken: #202125;
+    --ink: #f2f0ea;
+    --muted: #a4a3a0;
+    --border: #313236;
+    --border-strong: #45464b;
+    --accent: #d5a153;
+    --accent-ink: #e8c07f;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .kicker {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1.title {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(2.25rem, 4vw, 3.4rem);
+    line-height: 1.08;
+    margin: 0.5rem 0 1rem;
+    text-wrap: balance;
+  }
+
+  .lede {
+    max-width: 62ch;
+    font-size: 1.125rem;
+    color: var(--muted);
+  }
+
+  .keywords {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .keywords span {
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.8rem;
+    color: var(--ink);
+  }
+  .keywords span.avoid {
+    border-style: dashed;
+    color: var(--muted);
+  }
+
+  section.block {
+    margin-top: 5rem;
+  }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0 0 0.35rem;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  /* palette */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+  }
+  .swatch {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .swatch-color {
+    height: 84px;
+  }
+  .swatch-body {
+    padding: 0.85rem 1rem 1rem;
+  }
+  .swatch-role {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .swatch-hex {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 0.15rem 0 0.5rem;
+  }
+  .swatch-use {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .contrast-note {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+  .contrast-pass { background: rgba(47,122,76,0.12); color: var(--success); }
+  .contrast-caution { background: rgba(164,86,15,0.12); color: var(--warning); }
+
+  /* type scale */
+  .type-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .type-row:last-child { border-bottom: 1px solid var(--border); }
+  .type-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-top: 0.3rem;
+  }
+  .type-sample.display { font-family: var(--font-display); font-weight: 600; }
+  .type-sample.body { font-family: var(--font-body); }
+  .type-meta {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  /* components */
+  .component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+  .component-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    padding: 1.5rem;
+    background: var(--surface);
+  }
+  .component-card h3 {
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.75rem; }
+  .row:last-child { margin-bottom: 0; }
+
+  .btn {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius-s);
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: var(--accent-ink); }
+  .btn-primary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn-secondary { background: transparent; color: var(--ink); border-color: var(--border-strong); }
+  .btn-secondary:hover { border-color: var(--ink); }
+  .btn-ghost { background: transparent; color: var(--muted); border-color: transparent; }
+  .btn-ghost:hover { color: var(--ink); }
+  .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+  }
+  .field label { color: var(--muted); font-weight: 600; }
+  .field select, .field input {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-s);
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .field select:focus, .field input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+  }
+  .field.error select, .field.error input { border-color: var(--error); }
+  .field-error-msg { color: var(--error); font-size: 0.78rem; }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    color: var(--muted);
+  }
+  .chip.active { border-color: var(--accent); color: var(--accent-ink); background: rgba(169,117,36,0.1); }
+
+  .stars { letter-spacing: 0.05em; font-size: 0.95rem; }
+  .stars .filled { color: var(--accent); }
+  .stars .empty { color: var(--border-strong); }
+
+  /* representative screen mock */
+  .screen-mock {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+  }
+  @media (max-width: 760px) {
+    .screen-mock { grid-template-columns: 1fr; }
+  }
+
+  .mock-hero {
+    position: relative;
+    min-height: 420px;
+    background:
+      linear-gradient(180deg, rgba(10,10,12,0.15) 0%, rgba(10,10,12,0.65) 100%),
+      radial-gradient(120% 90% at 20% 15%, #4a4640 0%, #23211f 45%, #0c0c0d 100%);
+    color: #f2f0ea;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .mock-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: rgba(18,18,20,0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .mock-brand {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .mock-links {
+    display: flex;
+    gap: 1.1rem;
+    font-size: 0.8rem;
+    color: rgba(242,240,234,0.75);
+  }
+  .mock-links span.on { color: #f2f0ea; border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+  .mock-caption {
+    padding: 2rem 1.5rem;
+  }
+  .mock-caption .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(242,240,234,0.6);
+  }
+  .mock-caption h3 {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0.4rem 0 0.3rem;
+  }
+  .mock-caption p {
+    font-size: 0.85rem;
+    color: rgba(242,240,234,0.7);
+    margin: 0;
+  }
+
+  .mock-list {
+    background: var(--surface-sunken);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .mock-course {
+    display: flex;
+    gap: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    padding: 0.9rem;
+    align-items: center;
+  }
+  .mock-course .thumb {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: var(--radius-s);
+    background: linear-gradient(140deg, #3a3835 0%, #17161533 60%, #0e0d0c 100%);
+  }
+  .mock-course .body { flex: 1; min-width: 0; }
+  .mock-course .name { font-weight: 700; font-size: 0.95rem; }
+  .mock-course .loc { font-size: 0.78rem; color: var(--muted); margin: 0.15rem 0 0.4rem; }
+  .mock-course .meta { display: flex; gap: 1rem; font-size: 0.75rem; color: var(--muted); flex-wrap: wrap; }
+  .mock-course .meta strong { font-variant-numeric: tabular-nums; color: var(--ink); }
+
+  .foundations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  .foundation-item h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 0 0 0.6rem;
+  }
+  .spacing-bars span {
+    display: block;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-bottom: 6px;
+  }
+
+  .approval {
+    margin-top: 5rem;
+    padding: 2rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-m);
+    background: var(--surface);
+  }
+  .approval ol {
+    padding-left: 1.2rem;
+    line-height: 1.9;
+  }
+</style>
+
+<div class="wrap">
+  <p class="kicker">UI 디자인 디렉션 · 리뷰용 스타일 타일</p>
+  <h1 class="title">May World — 에디토리얼 모노크롬</h1>
+  <p class="lede">
+    무드 있는 여행 사진 갤러리와 유쾌한 골프장 리스트를 하나의 절제된 편집 언어로 묶는다.
+    넓은 흑백·웜그레이 톤 위에 타이포그래피와 여백으로 위계를 만들고, 앰버 골드 하나만 강조색으로 남긴다.
+  </p>
+  <div class="keywords">
+    <span>절제된</span>
+    <span>사진 중심</span>
+    <span>명료함</span>
+    <span class="avoid">유아틱함 ✕</span>
+    <span class="avoid">과잉 장식 ✕</span>
+  </div>
+
+  <section class="block">
+    <h2 class="section-title">컬러 팔레트</h2>
+    <p class="section-sub">canvas·surface·neutral이 화면 대부분을 차지하고, accent는 활성 상태·별점·핵심 CTA에만 제한적으로 쓴다.</p>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#15171b"></div>
+        <div class="swatch-body">
+          <div class="swatch-role">ink (primary)</div>
+          <div class="swatch-hex">#15171B</div>
+          <div class="swatch-use">제목, 본문, 기본 버튼 배경</div>
+          <span class="contrast-note contrast-pass">ink/paper 16.8:1</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f6f4ef"></div>
+        <div class="swatch-body">
+          <div class="swatch-role">paper (canvas)</div>
+          <div class="swatch-hex">#F6F4EF</div>
+          <div class="swatch-use">기본 배경 (라이트)</div>
+          <span class="contrast-note contrast-pass">기준면</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ffffff;border-bottom:1px solid #e4e1d8"></div>
+        <div class="swatch-body">
+          <div class="swatch-role">surface</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-use">카드, 인풋, 팝오버</div>
+          <span class="contrast-note contrast-pass">paper 대비 낮음(의도적)</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6b6d72"></div>
+        <div class="swatch-body">
+          <div class="swatch-role">muted (secondary)</div>
+          <div class="swatch-hex">#6B6D72</div>
+          <div class="swatch-use">보조 텍스트, 라벨</div>
+          <span class="contrast-note contrast-pass">muted/paper 6.7:1</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#a97524"></div>
+        <div class="swatch-body">
+          <div class="swatch-role">accent</div>
+          <div class="swatch-hex">#A97524</div>
+          <div class="swatch-use">활성 필터, 별점 채움, 핵심 링크 hover</div>
+          <span class="contrast-note contrast-caution">흰 배경 소형 텍스트 금지, 큰 텍스트·아이콘·경계선만</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e4e1d8;border:1px solid #cfccc1"></div>
+        <div class="swatch-body">
+          <div class="swatch-role">border</div>
+          <div class="swatch-hex">#E4E1D8</div>
+          <div class="swatch-use">카드·인풋 경계 (장식용, 텍스트 대비 기준 아님)</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#121214"></div>
+        <div class="swatch-body">
+          <div class="swatch-role">dark canvas</div>
+          <div class="swatch-hex">#121214</div>
+          <div class="swatch-use">사진 히어로, 다크 표면</div>
+          <span class="contrast-note contrast-pass">accent/dark 5.8:1</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2f7a4c"></div>
+        <div class="swatch-body">
+          <div class="swatch-role">success</div>
+          <div class="swatch-hex">#2F7A4C</div>
+          <div class="swatch-use">저장·필터 적용 완료 등 상태</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#b5372a"></div>
+        <div class="swatch-body">
+          <div class="swatch-role">error</div>
+          <div class="swatch-hex">#B5372A</div>
+          <div class="swatch-use">입력 오류, 리셋 활성 강조</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">타이포그래피</h2>
+    <p class="section-sub">Fraunces(디스플레이) + Inter(본문·UI) 조합. 갤러리 캡션과 섹션 타이틀은 Fraunces로 에디토리얼한 무게감을, 목록·필터·데이터는 Inter로 명료하게.</p>
+    <div class="type-row">
+      <div class="type-label">Display / H1</div>
+      <div class="type-sample display" style="font-size:2.6rem">아름다운 순간들</div>
+      <div class="type-meta">Fraunces 600 · 41.6px / 1.08 · 페이지 타이틀, 히어로 캡션</div>
+    </div>
+    <div class="type-row">
+      <div class="type-label">Heading / H2</div>
+      <div class="type-sample display" style="font-size:1.75rem">특별한 기능들</div>
+      <div class="type-meta">Fraunces 600 · 28px / 1.2 · 섹션 타이틀</div>
+    </div>
+    <div class="type-row">
+      <div class="type-label">Body</div>
+      <div class="type-sample body" style="font-size:1rem">이 갤러리는 Vue.js와 TypeScript로 제작된 현대적인 포토 갤러리입니다.</div>
+      <div class="type-meta">Inter 400 · 16px / 1.6 · 본문</div>
+    </div>
+    <div class="type-row">
+      <div class="type-label">Label</div>
+      <div class="type-sample body" style="font-size:0.8rem;font-weight:600;letter-spacing:0.04em">COURSE DIFFICULTY</div>
+      <div class="type-meta">Inter 600 · 12.8px · 대문자 라벨, 살짝 자간</div>
+    </div>
+    <div class="type-row">
+      <div class="type-label">Data</div>
+      <div class="type-sample body" style="font-size:0.95rem;font-variant-numeric:tabular-nums">전장 7,200m · 난이도 4/5</div>
+      <div class="type-meta">Inter · tabular-nums · 골프장 스펙, 숫자 정렬</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">Foundations</h2>
+    <div class="foundations-grid">
+      <div class="foundation-item">
+        <h4>간격</h4>
+        <div class="spacing-bars">
+          <span style="width:8px"></span>
+          <span style="width:16px"></span>
+          <span style="width:24px"></span>
+          <span style="width:40px"></span>
+          <span style="width:64px"></span>
+        </div>
+        <div class="type-meta">4 / 8 / 16 / 24 / 40 / 64px</div>
+      </div>
+      <div class="foundation-item">
+        <h4>반경</h4>
+        <div class="type-meta">s = 4px (인풋, 버튼)<br />m = 8px (카드, 패널)<br />pill = 999px (칩, 배지)</div>
+      </div>
+      <div class="foundation-item">
+        <h4>테두리·그림자</h4>
+        <div class="type-meta">1px 실선 경계 우선, 그림자는 최소(0 1px 2px). 깊이는 그림자보다 크기·위치·색면으로 표현.</div>
+      </div>
+      <div class="foundation-item">
+        <h4>모션</h4>
+        <div class="type-meta">160–200ms ease-out. 위치·투명도 변화만, 과장된 바운스 없음. prefers-reduced-motion 시 전환 생략.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">컴포넌트</h2>
+    <div class="component-grid">
+      <div class="component-card">
+        <h3>버튼</h3>
+        <div class="row">
+          <button class="btn btn-primary">갤러리 보기</button>
+          <button class="btn btn-secondary">소개 보기</button>
+          <button class="btn btn-ghost">더보기</button>
+        </div>
+        <div class="row">
+          <button class="btn btn-primary" disabled>비활성</button>
+          <span class="type-meta">default / hover / focus-visible / disabled 상태 포함</span>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <h3>필터 (셀렉트 · 칩)</h3>
+        <div class="row">
+          <div class="field">
+            <label>Course Difficulty</label>
+            <select><option>All Levels</option></select>
+          </div>
+          <div class="field error">
+            <label>Green Difficulty</label>
+            <select><option>잘못된 선택</option></select>
+            <span class="field-error-msg">값을 다시 선택해 주세요</span>
+          </div>
+        </div>
+        <div class="row">
+          <span class="chip active">전체 해제</span>
+          <span class="chip">난이도 4+</span>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <h3>별점 · 배지</h3>
+        <div class="row">
+          <span class="stars"><span class="filled">●</span><span class="filled">●</span><span class="filled">●</span><span class="filled">●</span><span class="empty">○</span></span>
+          <span class="type-meta">코스 난이도 4/5</span>
+        </div>
+        <div class="row">
+          <span class="chip">📍 경기도 성남시</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">대표 화면 방향</h2>
+    <p class="section-sub">좌: 사진 갤러리 히어로 — 글래스모피즘은 내비게이션 오버레이 한 곳에만 보조로 적용. 우: 골프장 리스트 카드 — 라이트 표면 위 앰버 accent로 상태 표시.</p>
+    <div class="screen-mock">
+      <div class="mock-hero">
+        <div class="mock-nav">
+          <div class="mock-brand">May World</div>
+          <div class="mock-links">
+            <span class="on">Gallery</span>
+            <span>Golf Courses</span>
+            <span>About</span>
+          </div>
+        </div>
+        <div class="mock-caption">
+          <div class="eyebrow">2024.12.11 · 서울</div>
+          <h3>이른 아침 출근길</h3>
+          <p>사람들은 부지런하다 — 이른 시각에도 지하철은 사람들로 가득했고, 밖은 아직 어두웠다.</p>
+        </div>
+      </div>
+      <div class="mock-list">
+        <div class="mock-course">
+          <div class="thumb"></div>
+          <div class="body">
+            <div class="name">버디보다밥이좋아 CC</div>
+            <div class="loc">📍 서울특별시 강남구</div>
+            <div class="meta">
+              <span>코스 <strong>●●●●○</strong></span>
+              <span>그린 <strong>●●●●●</strong></span>
+              <span>전장 <strong>7,200m</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="mock-course">
+          <div class="thumb"></div>
+          <div class="body">
+            <div class="name">공없어도스윙한다 CC</div>
+            <div class="loc">📍 부산광역시 해운대구</div>
+            <div class="meta">
+              <span>코스 <strong>●●●○○</strong></span>
+              <span>그린 <strong>●●●●○</strong></span>
+              <span>전장 <strong>6,800m</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="approval">
+    <h2 class="section-title">승인 요청</h2>
+    <p class="section-sub">아래 중 하나로 답해주세요.</p>
+    <ol>
+      <li><strong>승인</strong> — 이 방향으로 실제 화면(Home, Gallery, Golf Courses, About, 내비게이션)에 적용</li>
+      <li><strong>부분 수정</strong> — 팔레트/타이포/특정 컴포넌트 등 지정한 항목만 바꿔서 다시 리뷰</li>
+      <li><strong>방향 변경</strong> — 글래스모피즘 또는 네오브루탈리즘 후보로 다시 검토</li>
+    </ol>
+  </section>
+</div>

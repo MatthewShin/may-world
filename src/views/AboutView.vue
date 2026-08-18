@@ -77,48 +77,52 @@
 .about-header {
   text-align: center;
   margin-bottom: 3rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-radius: 1rem;
+  padding: 3rem 2rem;
+  background: var(--color-dark-canvas);
+  color: var(--color-dark-text);
+  border-radius: var(--radius-m);
 }
 
 .about-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
 }
 
 .about-subtitle {
-  font-size: 1.2rem;
-  opacity: 0.9;
+  font-size: 1.1rem;
+  color: var(--color-dark-muted);
 }
 
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .about-section {
-  background: white;
+  background: var(--color-surface);
   padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--color-border);
 }
 
 .about-section h2 {
-  color: #2c3e50;
-  font-size: 1.8rem;
+  font-family: var(--font-display);
+  color: var(--color-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
   margin-bottom: 1rem;
-  border-bottom: 3px solid #42b883;
+  border-bottom: 2px solid var(--color-accent);
   padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
 .about-section p {
-  color: #666;
+  color: var(--color-muted);
   line-height: 1.8;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .tech-grid {
@@ -131,9 +135,9 @@
 .tech-item {
   text-align: center;
   padding: 1.5rem;
-  background: #f8f9fa;
-  border-radius: 0.5rem;
-  transition: transform 0.3s ease;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-m);
+  transition: transform var(--motion-base);
 }
 
 .tech-item:hover {
@@ -141,18 +145,18 @@
 }
 
 .tech-icon {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   margin-bottom: 1rem;
 }
 
 .tech-item h3 {
-  color: #2c3e50;
-  font-size: 1.2rem;
+  color: var(--color-heading);
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 
 .tech-item p {
-  color: #666;
+  color: var(--color-muted);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -164,9 +168,9 @@
 
 .features-list li {
   padding: 0.75rem 0;
-  border-bottom: 1px solid #eee;
-  font-size: 1.1rem;
-  color: #666;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1rem;
+  color: var(--color-muted);
 }
 
 .features-list li:last-child {
@@ -174,18 +178,19 @@
 }
 
 .contact-info {
-  background: #f8f9fa;
+  background: var(--color-surface-sunken);
   padding: 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-m);
 }
 
 .contact-info p {
   margin: 0.5rem 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  color: var(--color-muted);
 }
 
 .contact-info strong {
-  color: #2c3e50;
+  color: var(--color-heading);
 }
 
 @media (max-width: 768px) {

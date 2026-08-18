@@ -1,52 +1,73 @@
-/* color palette from <https://github.com/vuejs/theme> */
+/* May World 디자인 토큰 — 에디토리얼 모노크롬 + 앰버 accent */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  --font-display: 'Fraunces', Georgia, 'Noto Serif KR', serif;
+  --font-body:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Pretendard',
+    'Apple SD Gothic Neo',
+    'Noto Sans KR',
+    'Malgun Gothic',
+    sans-serif;
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  --color-ink: #15171b;
+  --color-paper: #f6f4ef;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #efece4;
+  --color-muted: #6b6d72;
+  --color-border: #e4e1d8;
+  --color-border-strong: #cfccc1;
 
-  --vt-c-indigo: #2c3e50;
+  --color-accent: #a97524;
+  --color-accent-ink: #7a5619;
+  --color-success: #2f7a4c;
+  --color-warning: #a4560f;
+  --color-error: #b5372a;
 
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+  --color-dark-canvas: #121214;
+  --color-dark-surface: #1b1c1f;
+  --color-dark-text: #f2f0ea;
+  --color-dark-muted: #a4a3a0;
 
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-}
+  --radius-s: 4px;
+  --radius-m: 8px;
+  --radius-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(21, 23, 27, 0.06);
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  --motion-fast: 160ms ease-out;
+  --motion-base: 200ms ease-out;
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  /* 기존 코드 호환용 별칭 */
+  --color-background: var(--color-paper);
+  --color-background-soft: var(--color-surface);
+  --color-background-mute: var(--color-surface-sunken);
+  --color-border-hover: var(--color-border-strong);
+  --color-heading: var(--color-ink);
+  --color-text: var(--color-ink);
 
   --section-gap: 160px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+    --color-ink: var(--color-dark-text);
+    --color-paper: var(--color-dark-canvas);
+    --color-surface: var(--color-dark-surface);
+    --color-surface-sunken: #202125;
+    --color-muted: var(--color-dark-muted);
+    --color-border: #313236;
+    --color-border-strong: #45464b;
+    --color-accent: #d5a153;
+    --color-accent-ink: #e8c07f;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --color-background: var(--color-paper);
+    --color-background-soft: var(--color-surface);
+    --color-background-mute: var(--color-surface-sunken);
+    --color-border-hover: var(--color-border-strong);
+    --color-heading: var(--color-ink);
+    --color-text: var(--color-ink);
   }
 }
 
@@ -66,21 +87,18 @@ body {
     color 0.5s,
     background-color 0.5s;
   line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
+  font-family: var(--font-body);
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
