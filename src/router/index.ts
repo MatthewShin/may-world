@@ -13,6 +13,7 @@ const router = createRouter({
       path: '/gallery',
       name: 'gallery',
       component: () => import('../views/GalleryView.vue'),
+      meta: { fullBleed: true },
     },
     {
       path: '/golf-courses',

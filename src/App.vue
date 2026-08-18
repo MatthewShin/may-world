@@ -1,25 +1,29 @@
 <template>
   <div id="app">
-    <nav class="navbar">
+    <nav class="navbar" :class="{ 'navbar--overlay': isFullBleed }">
       <div class="nav-container">
-        <router-link to="/" class="nav-brand">Playground</router-link>
+        <router-link to="/" class="nav-brand">MayWorld</router-link>
         <div class="nav-links">
           <router-link to="/" class="nav-link">Home</router-link>
+          <router-link to="/about" class="nav-link">About</router-link>
           <router-link to="/gallery" class="nav-link">Gallery</router-link>
           <router-link to="/golf-courses" class="nav-link">Golf Courses</router-link>
-          <router-link to="/about" class="nav-link">About</router-link>
         </div>
       </div>
     </nav>
 
-    <main class="main-content">
+    <main class="main-content" :class="{ 'main-content--full': isFullBleed }">
       <router-view />
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-// 컴포넌트 로직이 필요하면 여기에 추가
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const isFullBleed = computed(() => Boolean(route.meta.fullBleed));
 </script>
 
 <style scoped>
@@ -35,6 +39,15 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.navbar--overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: rgba(18, 18, 20, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .nav-container {
@@ -101,6 +114,12 @@
   width: 100%;
 }
 
+.main-content--full {
+  padding: 0;
+  max-width: none;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
@@ -113,6 +132,10 @@
 
   .main-content {
     padding: 1rem;
+  }
+
+  .main-content--full {
+    padding: 0;
   }
 }
 </style>
